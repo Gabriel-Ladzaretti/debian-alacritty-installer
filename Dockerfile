@@ -1,0 +1,20 @@
+FROM rust:1.76.0-slim-bookworm
+
+ARG ALACRITTY_VERSION=v0.13.1
+
+RUN apt-get update && \
+    apt-get -y install \
+    cmake \
+    pkg-config \
+    libfreetype6-dev \
+    libfontconfig1-dev \
+    libxcb-xfixes0-dev \
+    libxkbcommon-dev \
+    python3 \
+    git
+
+RUN git clone -b ${ALACRITTY_VERSION} --depth 1 https://github.com/alacritty/alacritty.git
+
+WORKDIR /alacritty
+
+RUN cargo build --release --no-default-features --features=wayland
