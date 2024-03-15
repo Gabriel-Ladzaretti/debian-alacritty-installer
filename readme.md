@@ -11,6 +11,9 @@ It then builds Alacritty from source with the Wayland feature enabled, copies th
 
 1. Run the build script:
 
-```bash
-./build.sh
-```
+    ```bash
+    ./build.sh
+    ```
+
+2. Usecase:
+Provide an easy way to build the latest release from source for distros that are behind, such as Debian stable.
