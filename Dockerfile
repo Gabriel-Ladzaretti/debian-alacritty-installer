@@ -1,6 +1,6 @@
 FROM rust:1.76.0-slim-bookworm
 
-# renovate: datasource=github-tags packageName=https://github.com/alacritty/alacritty.git
+# renovate: datasource=github-releases depName=alacritty/alacritty
 ARG ALACRITTY_VERSION=v0.13.1
 
 RUN apt-get update && \
