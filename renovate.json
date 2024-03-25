@@ -10,7 +10,8 @@
                 "alacritty/alacritty",
                 "rust"
             ],
-            "automerge": true
+            "automerge": true,
+            "ignoreTests": true
         }
     ]
 }
