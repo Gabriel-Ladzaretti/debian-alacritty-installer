@@ -3,5 +3,14 @@
     "dependencyDashboard": true,
     "extends": [
         "regexManagers:dockerfileVersions"
+    ],
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "alacritty/alacritty",
+                "rust"
+            ],
+            "automerge": true
+        }
     ]
 }
