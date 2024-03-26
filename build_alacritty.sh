@@ -7,6 +7,13 @@ temp_dir=$(mktemp -d)
 mkdir -p $temp_dir/{man,completions}
 echo "Temporary directory path: $temp_dir"
 
+cleanup() {
+    echo "Removing temporary directory..."
+    rm -rf $temp_dir
+}
+
+trap cleanup EXIT
+
 echo "Building Docker image..."
 docker build .
 
@@ -24,8 +31,8 @@ docker cp $container_name:/alacritty/target/release/alacritty $temp_dir/
 docker cp $container_name:/alacritty/extra/logo/alacritty-term.svg $temp_dir/Alacritty.svg
 docker cp $container_name:/alacritty/extra/linux/Alacritty.desktop $temp_dir/
 docker cp $container_name:/alacritty/extra/alacritty.info $temp_dir/
-docker cp $container_name:/alacritty/extra/man $temp_dir/man
-docker cp $container_name:/alacritty/extra/completions $temp_dir/completions
+docker cp $container_name:/alacritty/extra/man $temp_dir/
+docker cp $container_name:/alacritty/extra/completions $temp_dir/
 
 echo "Cleaning up Docker assets..."
 docker rm -f $container_name
@@ -47,7 +54,7 @@ fi
 read -s -p "Enter Password for sudo: " password
 
 echo "Copying binary to /usr/local/bin..."
-echo "$password" | sudo cp $temp_dir/alacritty /usr/local/bin
+echo "$password" | sudo -kS cp $temp_dir/alacritty /usr/local/bin
 
 echo "Copying Logo SVG to /usr/share/pixmaps/Alacritty.svg..."
 sudo cp $temp_dir/Alacritty.svg /usr/share/pixmaps/Alacritty.svg
@@ -72,6 +79,3 @@ if command -v gzip &>/dev/null && command -v scdoc &>/dev/null; then
 else
     echo "WARNING: Both gzip and scdoc are required for installing manual page entries; skipping"
 fi
-
-echo "Removing temporary directory..."
-rm -rf $temp_dir
