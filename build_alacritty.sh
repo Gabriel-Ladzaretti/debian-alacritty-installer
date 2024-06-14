@@ -39,7 +39,7 @@ check_dependencies() {
 
     for bin in "${BINARY_DEPENDENCIES[@]}"; do
         if ! command -v "${bin}" &>/dev/null; then
-            echo "Error: Required binary '${bin}' not found in PATH. Please install it."
+            echo "Error: Required binary '${bin}' not found in \$PATH. Please install it."
             missing_binary=true
         fi
     done
