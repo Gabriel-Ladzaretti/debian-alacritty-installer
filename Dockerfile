@@ -1,4 +1,4 @@
-FROM rust:1.79.0-slim-bookworm
+FROM rust:1.80.0-slim-bookworm
 
 # renovate: datasource=github-releases depName=alacritty/alacritty
 ARG ALACRITTY_VERSION=v0.13.2
