@@ -1,10 +1,13 @@
-# Build Alacritty
+# Debian Alacritty installer
 
-The `./build_alacritty.sh` script builds Alacritty from source within a Docker container. It clones the Alacritty repository and checks out the latest released version. Then, it builds Alacritty from source with the Wayland feature enabled, copies the binary to `/usr/local/bin`, adds a desktop entry, and installs its manual pages.
+This project builds and installs the latest `Alacritty` terminal release from source. It follows the official [build instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md#building) using the provided convenience script.
 
-## Requirements
+> [!NOTE]
+> The `Alacritty` version installed by the script is automatically updated to the latest release using the Renovate dependency update tool.
 
-1. Bash
+
+## Prerequisites
+
 1. Docker
 
 ## Usage
