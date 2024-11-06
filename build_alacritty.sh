@@ -64,11 +64,10 @@ check_dependencies() {
 #   The path to the created temporary directory.
 #######################################
 create_temp_dir() {
-    echo "Creating temporary directory..."
     local temp_dir
     temp_dir="$(mktemp -d)"
     mkdir -p "${temp_dir}/man" "${temp_dir}/completions"
-    echo "Temporary directory created at: ${temp_dir}"
+    echo "${temp_dir}"
 }
 
 #######################################
@@ -82,8 +81,6 @@ create_temp_dir() {
 #   Exits with status 1 if Docker build fails.
 #######################################
 build_alacritty_from_source() {
-    echo "Building Alacritty from source..."
-
     local tag=${IMAGE_TAG}
     local name=${CONTAINER_NAME}
 
@@ -132,8 +129,6 @@ cleanup() {
 #   dst_dir: The destination directory to copy the files to.
 #######################################
 copy_binary_and_assets() {
-    echo "Copying binary and assets from container..."
-
     local dst_dir=$1
     local container_name=${CONTAINER_NAME}
 
