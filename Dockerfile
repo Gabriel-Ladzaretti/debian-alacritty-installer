@@ -1,7 +1,7 @@
 FROM rust:1.90.0-slim-bookworm
 
 # renovate: datasource=github-releases depName=alacritty/alacritty
-ARG ALACRITTY_VERSION=v0.16.0
+ARG ALACRITTY_VERSION=v0.16.1
 
 RUN apt-get update && \
     apt-get -y install \
